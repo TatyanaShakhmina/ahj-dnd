@@ -1,0 +1,190 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0079bf;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.column {
+    background-color: #ebecf0;
+    border-radius: 8px;
+    padding: 10px;
+    width: 300px;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.column h1 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 10px 0;
+    padding: 0 8px;
+}
+
+.add-card-btn {
+    background: transparent;
+    border: none;
+    color: #5e6c84;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 8px;
+    text-align: left;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+    margin-top: auto;
+}
+
+.add-card-btn:hover {
+    background-color: rgba(9, 30, 66, 0.08);
+}
+
+.form {
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: auto;
+}
+
+.form.active {
+    display: flex;
+}
+
+.form-input {
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 14px;
+    box-shadow: 0 1px 0 rgba(9, 30, 66, 0.13);
+    outline: none;
+    resize: none;
+    font-family: inherit;
+}
+
+.form-input:focus {
+    box-shadow: 0 0 0 2px #0079bf;
+}
+
+.form-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-btn-add {
+    background-color: #0079bf;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 16px;
+    transition: background-color 0.2s;
+}
+
+.form-btn-add:hover {
+    background-color: #026aa7;
+}
+
+.form-btn-cancel {
+    background: transparent;
+    border: none;
+    color: #5e6c84;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 4px 8px;
+    transition: color 0.2s;
+}
+
+.form-btn-cancel:hover {
+    color: #172b4d;
+}
+
+.column:has(.form.active) .add-card-btn {
+    display: none;
+}
+
+.card {
+    background-color: white;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 8px;
+    box-shadow: 0 1px 0 rgba(9, 30, 66, 0.13);
+    cursor: grab;
+    font-size: 14px;
+    transition: background-color 0.2s;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.card:hover {
+    background-color: #f4f5f7;
+}
+
+.card:active {
+    cursor: grabbing;
+}
+
+.card-text {
+    flex: 1;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.card-delete {
+    background: transparent;
+    border: none;
+    color: #5e6c84;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 4px;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.2s, background-color 0.2s;
+    flex-shrink: 0;
+}
+
+.card:hover .card-delete {
+    opacity: 1;
+}
+
+.card-delete:hover {
+    background-color: rgba(9, 30, 66, 0.08);
+    color: #172b4d;
+}
+
+/* Стили для перетаскивания */
+.card.dragging {
+    position: fixed;
+    pointer-events: none;
+    z-index: 1000;
+    cursor: grabbing;
+    transform: rotate(5deg);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    opacity: 0.9;
+}
+
+.card-placeholder {
+    background-color: rgba(9, 30, 66, 0.13);
+    border: 2px dashed #5e6c84;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
